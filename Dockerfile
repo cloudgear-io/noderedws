@@ -32,28 +32,28 @@ RUN apk add --no-cache curl make gcc g++ python linux-headers binutils-gold gnup
   rm -rf ${RM_DIRS} /node-${VERSION}* /usr/share/man /tmp/* /var/cache/apk/* \
     /root/.npm /root/.node-gyp /root/.gnupg /usr/lib/node_modules/npm/man \
     /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html /usr/lib/node_modules/npm/scripts
-RUN cd /opt && git clone https://github.com/node-red/node-red.git
-RUN cd /opt/node-red && npm install
-RUN cd /opt/node-red && grunt build
+RUN cd / && git clone https://github.com/node-red/node-red.git
+RUN cd /node-red && npm install
+RUN cd /node-red && grunt build
 EXPOSE 1880
 EXPOSE 1881
-RUN cd /opt/node-red && npm install node-red-contrib-freeboard
-RUN cd /opt/node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/ && git clone https://github.com/Freeboard/plugins.git
-RUN cd /opt/node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/plugins && mv * ../
-RUN cd /opt/node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/ && rm -rf plugins
-RUN cd /opt/node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/ && sed -i.bak -e '13d' index.html
-RUN cd /opt/node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/ && sed -i '13ihead.js("js/freeboard.js","js/freeboard.plugins.min.js", "../freeboard_api/datasources","plugins/datasources/plugin_json_ws.js","plugins/datasources/plugin_node.js",' index.html
-RUN cd /opt/node-red && npm install node-red-node-mongodb
-RUN cd /opt/node-red && npm install node-red-contrib-mongodb2
-RUN cd /opt/node-red && npm install node-red-contrib-salesforce
-RUN cd /opt/node-red && npm install node-red-contrib-googlechart
-RUN cd /opt/node-red && npm install node-red-contrib-azure-documentdb 
-RUN cd /opt/node-red && npm install node-red-contrib-azure-https
-RUN cd /opt/node-red && npm install node-red-contrib-azure-table-storage
-RUN cd /opt/node-red && npm install node-red-contrib-azure-blob-storage
-RUN cd /opt/node-red && npm install node-red-contrib-azure-iot-hub
-RUN cd /opt/node-red && npm install node-red-contrib-cognitive-services
-RUN cd /opt/node-red && npm install node-red-contrib-azure-sql
-RUN cd /opt/node-red && npm install node-red-contrib-azureiothubnode
-RUN cd /opt/node-red && npm install node-red-contrib-swagger
-CMD ["node", "/opt/node-red/red.js"]
+RUN cd /node-red && npm install node-red-contrib-freeboard
+RUN cd /node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/ && git clone https://github.com/Freeboard/plugins.git
+RUN cd /node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/plugins && mv * ../
+RUN cd /node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/ && rm -rf plugins
+RUN cd /node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/ && sed -i.bak -e '13d' index.html
+RUN cd /node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/ && sed -i '13ihead.js("js/freeboard.js","js/freeboard.plugins.min.js", "../freeboard_api/datasources","plugins/datasources/plugin_json_ws.js","plugins/datasources/plugin_node.js",' index.html
+RUN cd /node-red && npm install node-red-node-mongodb
+RUN cd /node-red && npm install node-red-contrib-mongodb2
+RUN cd /node-red && npm install node-red-contrib-salesforce
+RUN cd /node-red && npm install node-red-contrib-googlechart
+RUN cd /node-red && npm install node-red-contrib-azure-documentdb 
+RUN cd /node-red && npm install node-red-contrib-azure-https
+RUN cd /node-red && npm install node-red-contrib-azure-table-storage
+RUN cd /node-red && npm install node-red-contrib-azure-blob-storage
+RUN cd /node-red && npm install node-red-contrib-azure-iot-hub
+RUN cd /node-red && npm install node-red-contrib-cognitive-services
+RUN cd /node-red && npm install node-red-contrib-azure-sql
+RUN cd /node-red && npm install node-red-contrib-azureiothubnode
+RUN cd /node-red && npm install node-red-contrib-swagger
+CMD ["node", "/node-red/red.js"]
