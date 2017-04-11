@@ -1,6 +1,6 @@
 FROM alpine:3.5
 
-ENV VERSION=v7.5.0 NPM_VERSION=4
+ENV VERSION=v7.8.0 NPM_VERSION=4
 
 # For base builds
 ENV CONFIG_FLAGS="--fully-static --without-npm" DEL_PKGS="libstdc++" RM_DIRS=/usr/include
