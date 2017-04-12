@@ -32,27 +32,27 @@ RUN apk add --no-cache curl make gcc g++ python linux-headers binutils-gold gnup
     /root/.npm /root/.node-gyp /root/.gnupg /usr/lib/node_modules/npm/man \
     /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html /usr/lib/node_modules/npm/scripts
 RUN cd / && git clone https://github.com/node-red/node-red.git
-RUN cd /node-red && /usr/bin/npm install
+RUN cd /node-red && /usr/local/bin/npm install
 RUN cd /node-red && grunt build
 EXPOSE 1880
 EXPOSE 1881
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-freeboard
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-freeboard
 RUN cd /node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/ && git clone https://github.com/Freeboard/plugins.git
 RUN cd /node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/plugins && mv * ../
 RUN cd /node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/plugins/ && rm -rf plugins
 RUN cd /node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/ && sed -i.bak -e '13d' index.html
 RUN cd /node-red/node_modules/node-red-contrib-freeboard/node_modules/freeboard/ && sed -i '13ihead.js("js/freeboard.js","js/freeboard.plugins.min.js", "../freeboard_api/datasources","plugins/datasources/plugin_json_ws.js","plugins/datasources/plugin_node.js",' index.html
-RUN cd /node-red && /usr/bin/npm install node-red-node-mongodb
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-mongodb2
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-salesforce
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-googlechart
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-azure-documentdb 
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-azure-https
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-azure-table-storage
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-azure-blob-storage
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-azure-iot-hub
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-cognitive-services
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-azure-sql
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-azureiothubnode
-RUN cd /node-red && /usr/bin/npm install node-red-contrib-swagger
+RUN cd /node-red && /usr/local/bin/npm install node-red-node-mongodb
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-mongodb2
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-salesforce
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-googlechart
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-azure-documentdb 
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-azure-https
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-azure-table-storage
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-azure-blob-storage
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-azure-iot-hub
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-cognitive-services
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-azure-sql
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-azureiothubnode
+RUN cd /node-red && /usr/local/bin/npm install node-red-contrib-swagger
 CMD ["node", "/node-red/red.js"]
