@@ -35,4 +35,5 @@ RUN npm install node-red-contrib-cognitive-services
 RUN npm install node-red-contrib-azure-sql
 RUN npm install node-red-contrib-azureiothubnode
 RUN npm install node-red-contrib-swagger
+RUN rm -rf /src/node-red/freeboard && rm -rf /src/node-red/node-red-contrib-freeboard
 CMD ["node", "/src/node-red/red.js"]
