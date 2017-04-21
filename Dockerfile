@@ -1,4 +1,5 @@
 FROM mhart/alpine-node:7.9
+MAINTAINER Dwai Banerjee "dwai@cloudgear.io"
 RUN apk add --no-cache git make gcc g++ python
 WORKDIR /src
 ADD . .
